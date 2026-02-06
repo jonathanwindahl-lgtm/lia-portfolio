@@ -1,0 +1,346 @@
+* {
+  margin: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: #0077CC;
+  --main-color-dark: #005FA3;
+}
+
+body {
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h1 {
+  padding: 5px;
+  flex-grow: 1;
+}
+
+h2 {
+  padding: 5px;
+
+}
+
+.text-main {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+a {
+  color: var(--main-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.top {
+  display: flex;
+  background-color: var(--main-color);
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
+
+.head {
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.search-bar {
+  background-color: lightgray;
+  border-radius: 8px;
+  border: none;
+  width: 400px;
+  padding: 10px;
+}
+
+.search {
+  margin-top: 15px;
+  flex-grow: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+.user-nav {
+  padding-left: 5px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.cart-wrapper {
+
+  position: relative;
+  display: inline-block;
+}
+
+#cart-icon {
+  width: 30px;
+}
+
+#cart-count {
+  color: red;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.meny {
+  padding: 5px;
+}
+
+.meny a:hover {
+  background-color: var(--main-color-dark);
+  color: white;
+}
+
+.meny li {
+  display: inline;
+}
+
+
+.divider {
+  background-color: var(--main-color);
+  height: 5px;
+  margin: 5px 0 10px;
+}
+
+
+.filter {
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: 5px;
+}
+
+select {
+  color: var(--main-color);
+  padding: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 5px;
+}
+
+.produkt-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+  margin-block: 10px;
+  justify-items: center;
+  text-align: left;
+  ;
+}
+
+.produkt-flex {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.produkt-grid img,
+.produkt-flex img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.produkt-flex img {
+  max-width: 600px;
+}
+
+.produkt-grid img:hover {
+  transform: scale(1.05);
+}
+
+.info {
+  width: 300px;
+  margin-left: 30px;
+}
+
+#product-info {
+  margin: 20px;
+  margin-left: 20px;
+
+}
+
+#size {
+  width: 30%;
+  height: 50px;
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.info-group {
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+.info-group input {
+  width: 200px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.radio-group {
+  margin-bottom: 0.5em;
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 0.3em;
+}
+
+#discount-section {
+  margin: 10px 0 10px;
+}
+
+.btn {
+  background-color: var(--main-color);
+  color: white;
+  padding: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s ease;
+  display: inline-block;
+  width: 200px;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background-color: var(--main-color-dark);
+}
+
+
+button:focus,
+a:focus {
+  outline: 2px solid var(--main-color);
+  outline-offset: 2px;
+}
+
+.footer-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  color: var(--main-color);
+}
+
+ul {
+  padding: 0;
+}
+
+.footer-section li {
+  list-style: none;
+
+}
+
+.city-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.city-table td {
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.header-row {
+  font-weight: bold;
+  background: var(--main-color);
+}
+
+.selected {
+  background: var(--main-color);
+}
+
+.actions {
+  margin-top: 10px;
+}
+
+.actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#discountBtn,
+#cancelEdit,
+#submitBtn,
+#editBtn,
+#deleteBtn {
+  color: white;
+  background-color: var(--main-color);
+}
+
+@media screen and (max-width: 980px) {
+  .produkt-grid {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top {
+    font-size: 0.7rem;
+  }
+
+  .head {
+    flex-direction: column;
+  }
+
+  .search {
+    margin-top: 0%;
+  }
+
+  .info {
+    margin: 0;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  select {
+    font-size: 0.8rem;
+  }
+
+  .produkt-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .produkt-flex {
+    flex-wrap: wrap;
+  }
+
+  .footer-section {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .produkt-grid {
+    grid-template-columns: 1fr;
+
+  }
+
+  .field {
+    margin: auto;
+    width: 100%;
+  }
+}

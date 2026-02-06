@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Handla löparskor online hos oss. Stort utbud av märken, fri frakt och snabb leverans. Perfekt för alla löpare!">
+  <link href="css/index.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Löparskor Online | Springskor.se</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="top">
+        <p>1-4 arbetsdagars leveranstid</p>
+        <p>Fri frakt & retur till butik</p>
+        <p>Öppet köp i 365 dagar</p>
+      </div>
+
+      <div class="head">
+        <h1><a href="index.html">Springskor</a></h1>
+        <form role="search" class="search">
+          <label for="sitesearch" class="hidden">Sök på produkter</label>
+          <input id="sitesearch" type="text" class="search-bar" placeholder="Sök på produkter">
+        </form>
+
+        <nav class="user-nav">
+          <a href="login.html">Logga in</a>
+          <span id="cart-count"></span>
+          <a href="kassa.html">
+            <div id="cart-display"></div>
+            <img id="cart-icon" src="media/kassa.jpg" alt="Till kassan">
+          </a>
+        </nav>
+      </div>
+
+      <nav class="meny">
+        <li><a href="locations.html">Städer</a></li>
+        <li><a href="chart.html">Chart</a></li>
+      </nav>
+      <div class="divider"></div>
+    </header>
+
+    <main>
+
+      <canvas id="priceChart"></canvas>
+      <canvas id="colorChart" style="margin-top: 40px;"></canvas>
+
+    </main>
+
+    <div class="divider"></div>
+
+
+  </div>
+
+  <script src="js/index.js"></script>
+  <script>
+    fetch("https://6915a1dc84e8bd126afabb7f.mockapi.io/Products")
+      .then(res => res.json())
+      .then(products => {
+
+
+        // jag använder slice här pga jag bara har bara 4 produkter som jag använder upprepande 3 gånger
+        const firstFour = products.slice(0, 4)
+
+        let labels = firstFour.map(item => {
+          return item.description
+        })
+
+        let prices = firstFour.map(p => p.price)
+
+        const priceCanvas = document.getElementById("priceChart")
+        const priceChart = priceCanvas.getContext("2d")
+
+        new Chart(priceChart, {
+          type: "bar",
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: "Pris (kr)",
+                data: prices,
+                backgroundColor: [
+                  "rgba(0,0,0,1)",
+                  "rgba(245, 40, 145, 0.8)",
+                  "rgba(39, 53, 245, 0.8)",
+                  "rgba(255,255,255,0.8)"
+                ],
+                borderColor: [
+                  "rgb(0,0,0)",
+                  "rgb(245,40,145)",
+                  "rgb(39,53,245)",
+                  "rgb(0,0,0)"
+                ],
+                borderWidth: 1
+              }
+            ]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        })
+
+        const colorCounts = {}
+
+        for (let i = 0; i < products.length; i++) {
+          const color = products[i].color
+
+          if (colorCounts[color] === undefined) {
+            colorCounts[color] = 1
+          } else {
+            colorCounts[color]++
+          }
+        }
+
+        const colorLabels = Object.keys(colorCounts)
+        const colorValues = Object.values(colorCounts)
+
+
+        let colorCanvas = document.querySelector("#colorChart")
+        let colorChart = colorCanvas.getContext("2d")
+
+        new Chart(colorChart, {
+          type: "pie",
+          data: {
+            labels: colorLabels,
+            datasets: [
+              {
+                label: "Antal produkter per färg",
+                data: colorValues,
+                backgroundColor: [
+                  "rgba(0,0,0,1)",
+                  "rgba(245,40,145,0.8)",
+                  "rgba(39,53,245,0.8)",
+                  "rgba(255,255,255,0.8)"
+                ],
+                borderColor: [
+                  "rgb(0,0,0)",
+                  "rgb(245,40,145)",
+                  "rgb(39,53,245)",
+                  "rgb(0,0,0)"
+                ],
+                borderWidth: 1
+              }
+            ]
+          }
+        })
+      })
+  </script>

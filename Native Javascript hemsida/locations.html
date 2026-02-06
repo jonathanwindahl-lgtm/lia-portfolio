@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Handla löparskor online hos oss. Stort utbud av märken, fri frakt och snabb leverans. Perfekt för alla löpare!">
+  <link href="css/index.css" rel="stylesheet">
+
+  <title>Löparskor Online | Springskor.se</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="top">
+        <p>1-4 arbetsdagars leveranstid</p>
+        <p>Fri frakt & retur till butik</p>
+        <p>Öppet köp i 365 dagar</p>
+      </div>
+
+      <div class="head">
+        <h1><a href="index.html">Springskor</a></h1>
+        <form role="search" class="search">
+          <label for="sitesearch" class="hidden">Sök på produkter</label>
+          <input id="sitesearch" type="text" class="search-bar" placeholder="Sök på produkter">
+        </form>
+
+        <nav class="user-nav">
+          <a href="login.html">Logga in</a>
+          <span id="cart-count">0</span>
+          <a href="kassa.html">
+            <div id="cart-display"></div>
+            <img id="cart-icon" src="media/kassa.jpg" alt="Till kassan">
+          </a>
+        </nav>
+      </div>
+
+      <nav class="meny">
+        <li><a href="locations.html">Städer</a></li>
+        <li><a href="chart.html">Chart</a></li>
+      </nav>
+      <div class="divider"></div>
+    </header>
+    <main>
+      <form id="cityForm">
+        <input id="name" type="text" placeholder="Namn" required>
+        <input id="population" type="number" placeholder="Befolkning" required>
+        <input id="cityId" type="hidden">
+        <button id="submitBtn" type="submit">Spara</button>
+        <button type="button" id="cancelEdit" style="display:none">Avbryt</button>
+      </form>
+
+      <div class="actions">
+        <button id="editBtn">Redigera</button>
+        <button id="deleteBtn">Ta bort</button>
+      </div>
+
+      <h2>Lista</h2>
+
+      <table class="city-table">
+        <tbody id="cities">
+          <tr class="header-row">
+            <td>Namn</td>
+            <td>Befolkning</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <script>
+        const API = "https://avancera.app/cities/"
+
+        const form = document.getElementById("cityForm")
+        const nameInput = document.querySelector("#name")
+        const popInput = document.querySelector("#population")
+        const idInput = document.querySelector("#cityId")
+        const cancelEdit = document.getElementById("cancelEdit")
+        const table = document.getElementById("cities")
+
+        const editBtn = document.getElementById("editBtn")
+        const deleteBtn = document.getElementById("deleteBtn")
+
+        let selectedId = null
+
+        cancelEdit.addEventListener("click", () => {
+          form.reset()
+          idInput.value = ""
+          cancelEdit.style.display = "none"
+        })
+
+        async function loadCities() {
+          const res = await fetch(API)
+          const cities = await res.json()
+
+          table.innerHTML = `
+      <tr class="header-row">
+        <td>Namn</td><td>Befolkning</td>
+      </tr>`
+
+          cities.forEach((city) => {
+            const row = document.createElement("tr")
+            row.dataset.id = city.id
+
+            row.innerHTML = `
+        <td>${city.name}</td>
+        <td>${city.population}</td>
+      `
+
+            row.addEventListener("click", () => selectRow(row, city.id))
+
+            table.appendChild(row)
+          })
+        }
+
+        function selectRow(row, id) {
+          document.querySelectorAll("#cities tr").forEach(r => {
+            r.classList.remove("selected")
+          })
+
+          row.classList.add("selected")
+          selectedId = id
+
+
+        }
+
+        editBtn.addEventListener("click", () => {
+          if (!selectedId) {
+            return
+          }
+          editCity(selectedId)
+        })
+
+        deleteBtn.addEventListener("click", () => {
+          if (!selectedId) return
+          deleteCity(selectedId)
+        })
+
+        async function editCity(id) {
+          const res = await fetch(API + id)
+          const city = await res.json()
+
+          nameInput.value = city.name
+          popInput.value = city.population
+          idInput.value = city.id
+
+          cancelEdit.style.display = "block"
+        }
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault()
+
+          const cityData = {
+            name: nameInput.value,
+            population: Number(popInput.value),
+          }
+
+          if (idInput.value !== "") {
+            cityData.id = idInput.value
+
+            await fetch(API + idInput.value, {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(cityData),
+            })
+          } else {
+            await fetch(API, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(cityData),
+            })
+          }
+
+          form.reset()
+          idInput.value = ""
+          selectedId = null
+
+          cancelEdit.style.display = "none"
+
+          loadCities()
+        })
+
+        async function deleteCity(id) {
+          await fetch(API + id, { method: "DELETE" })
+          selectedId = null
+          loadCities()
+        }
+
+        loadCities()
+      </script>

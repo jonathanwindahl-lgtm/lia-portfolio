@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Logga in på ditt konto hos Springskor. Hantera beställningar, önskelistor och dina personliga inställningar enkelt.">
+  <link href="css/login.css" rel="stylesheet">
+  <title>Login</title>
+</head>
+
+<body>
+  <header>
+    <h1><a href="test.html">Springskor</a></h1>
+  </header>
+  <main>
+    <article>
+      <section class="login">
+        <h2>Skapa konto</h2>
+        <form onsubmit="return false;">
+          <label for="email">Email</label>
+          <input class="info" type="email" id="email" name="email" placeholder="Ange mejladress" required>
+          <p id="emailError" style="display: none;">Ange en mejladress</p>
+          <label for="psw">Lösenord</label>
+          <input class="info" type="password" id="password" name="password" placeholder="Ange lösenord" required>
+          <p id="passwordError" style="display: none;"> </p>
+          <button type="button" onclick="createAccount()">Skapa konto</button>
+          <p id="message"></p>
+        </form>
+        <aside>
+          <a href="login.html">Tillbaka till inloggning</a>
+        </aside>
+      </section>
+    </article>
+  </main>
+  <script src="js/index.js"></script>
+</body>
+
+</html>

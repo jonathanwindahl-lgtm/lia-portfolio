@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Upptäck Löparskor - högkvalitativa löparskor för alla nivåer. Bekväma, hållbara och designade för maximal prestation">
+  <link href="css/index.css" rel="stylesheet">
+  <title>Produkt | Springskor</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <header>
+      <div class="top">
+        <p>1-4 arbetsdagars leveranstid</p>
+        <p>Fri frakt & retur till butik</p>
+        <p>Öppet köp i 365 dagar</p>
+      </div>
+
+      <div class="head">
+        <h1><a href="index.html">Springskor</a></h1>
+        <form role="search" class="search">
+          <label for="sitesearch" class="hidden">Sök på produkter</label>
+          <input id="sitesearch" type="search" class="search-bar" placeholder="Sök på produkter">
+        </form>
+
+        <nav class="user-nav">
+          <a href="login.html">Logga in</a>
+          <span id="cart-count">0</span>
+          <div id="cart-display"></div>
+          <a href="kassa.html"><img id="cart-icon" src="media/kassa.jpg" alt="Till kassan"> </a>
+        </nav>
+      </div>
+
+      <nav class="meny">
+        <li><a href="locations.html">Städer</a></li>
+        <li><a href="chart.html">Chart</a></li>
+      </nav>
+
+      <div class="divider"></div>
+    </header>
+
+    <main>
+      <div class="text-main">
+        <section class="produkt-flex">
+          <article>
+            <div id="single-product">
+              <img id="product-image">
+              <h1 id="product-title"></h1>
+              <p id="product-price"></p>
+              <p id="product-description"></p>
+            </div>
+
+            <label for="size">Storlek</label>
+            <div>
+              <select name="size" id="size" required>
+                <option selected disabled value="">Välj storlek</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+              </select>
+            </div>
+            <p id="sizeError"></p>
+            <div>
+              <button class="btn" id="addToCartBtn">Lägg i kundvagn</button>
+            </div>
+            <section id="product-info">
+              <h3>Produktinformation</h3>
+              <ul>
+                <li>Lätta och bekväma löparskor</li>
+                <li>Andningsbar ovandel i mesh</li>
+                <li>Dämpad sula för optimal komfort</li>
+                <li>Perfekta för både träning och vardagslöpning</li>
+              </ul>
+            </section>
+      </div>
+      </section>
+  </div>
+  </main>
+
+  <div class="divider"></div>
+
+  <footer>
+    <div class="footer-section">
+      <section>
+        <h3>Kontakta oss</h3>
+        <p>kundservice@springskor.se</p>
+      </section>
+
+      <section>
+        <h3>Kundservice</h3>
+        <nav>
+          <ul>
+            <li><a href="#">Kontakta oss</a></li>
+            <li><a href="#">Vanliga frågor och svar</a></li>
+            <li><a href="#">Återkallelse</a></li>
+            <li><a href="#">Köpvillkor</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <section>
+        <h3>Om Springskor</h3>
+        <nav>
+          <ul>
+            <li><a href="#">Club Springskor</a></li>
+            <li><a href="#">Karriär på Springskor</a></li>
+            <li><a href="#">Vårt ansvar</a></li>
+            <li><a href="#">Service</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <section>
+        <h3>Aktuellt</h3>
+        <nav>
+          <ul>
+            <li><a href="#">Träning</a></li>
+            <li><a href="#">Löpning</a></li>
+            <li><a href="#">Outdoor</a></li>
+
+          </ul>
+        </nav>
+      </section>
+    </div>
+
+    <p>© 2025 Springskor AB</p>
+
+  </footer>
+  </div>
+  <script src="js/index.js">
+
+
+  </script>
+</body>
+
+</html>

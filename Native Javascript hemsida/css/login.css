@@ -1,0 +1,70 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  background-color: #f7f7f7;
+  font-family: sans-serif;
+}
+
+.login {
+  background-color: white;
+  padding: 25px;
+  width: 100%;
+  max-width: 400px;
+}
+
+h1 {
+  color: #0077CC;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+a {
+  color: #0077CC;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin: 20px 0;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+.info {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 0.5em;
+}
+
+button {
+  background-color: #0077CC;
+  color: white;
+  width: 100%;
+  padding: 1em 1em;
+  border-radius: 10px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #005FA3;
+}
+
+p {
+  text-align: center;
+  margin: 0.5em 0;
+}
+
+@media screen and (max-width: 768px) {
+  .login {
+    max-width: 300px;
+  }
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Handla löparskor online hos oss. Stort utbud av märken, fri frakt och snabb leverans. Perfekt för alla löpare!">
+  <link href="css/index.css" rel="stylesheet">
+
+  <title>Löparskor Online | Springskor.se</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="top">
+        <p>1-4 arbetsdagars leveranstid</p>
+        <p>Fri frakt & retur till butik</p>
+        <p>Öppet köp i 365 dagar</p>
+      </div>
+
+      <div class="head">
+        <h1><a href="index.html">Springskor</a></h1>
+        <form role="search" class="search">
+          <label for="sitesearch" class="hidden">Sök på produkter</label>
+          <input id="sitesearch" type="text" class="search-bar" placeholder="Sök på produkter">
+        </form>
+
+        <nav class="user-nav">
+          <a href="login.html">Logga in</a>
+          <span id="cart-count"></span>
+          <a href="kassa.html">
+            <div id="cart-display"></div>
+            <img id="cart-icon" src="media/kassa.jpg" alt="Till kassan">
+          </a>
+        </nav>
+      </div>
+
+      <nav class="meny">
+
+
+        <li><a href="locations.html">Städer</a></li>
+        <li><a href="chart.html">Chart</a></li>
+
+
+      </nav>
+      <div class="divider"></div>
+    </header>
+
+    <main>
+      <div class="text-main">
+        <form>
+          <section class="filter">
+            <select id="filter-style" name="style">
+              <option selected value="">Löpstil</option>
+              <option value="neutral">Neutral</option>
+              <option value="stabil">Stabil</option>
+            </select>
+
+            <select id="filter-damping" name="damping">
+              <option selected value="">Dämpning</option>
+              <option value="mjuk">Mjuk</option>
+              <option value="medel">Medel</option>
+              <option value="fast">Fast</option>
+            </select>
+
+            <select id="filter-color" name="color">
+              <option selected value="">Färg</option>
+              <option value="svart">Svart</option>
+              <option value="vit">Vit</option>
+              <option value="blå">Blå</option>
+              <option value="rosa">Rosa</option>
+            </select>
+
+            <select id="filter-price" name="price">
+              <option selected value="">Pris</option>
+              <option value="cheaper">500-1000</option>
+              <option value="cheap">1000-1500</option>
+              <option value="average">1500-2000</option>
+              <option value="expensive">2000-2500 </option>
+            </select>
+
+          </section>
+        </form>
+
+        <h2>Populära produkter</h2>
+
+        <div class="product-container"></div>
+      </div>
+    </main>
+
+    <div class="divider"></div>
+
+    <footer>
+      <div class="footer-section">
+        <section>
+          <h3>Kontakta oss</h3>
+          <p>kundservice@springskor.se</p>
+        </section>
+
+        <section>
+          <h3>Kundservice</h3>
+          <nav>
+            <ul>
+              <li><a href="#">Kontakta oss</a></li>
+              <li><a href="#">Vanliga frågor och svar</a></li>
+              <li><a href="#">Återkallelse</a></li>
+              <li><a href="#">Köpvillkor</a></li>
+            </ul>
+          </nav>
+        </section>
+
+        <section>
+          <h3>Om Springskor</h3>
+          <nav>
+            <ul>
+              <li><a href="#">Club Springskor</a></li>
+              <li><a href="#">Karriär på Springskor</a></li>
+              <li><a href="#">Vårt ansvar</a></li>
+              <li><a href="#">Service</a></li>
+            </ul>
+          </nav>
+        </section>
+
+        <section>
+          <h3>Aktuellt</h3>
+          <nav>
+            <ul>
+              <li><a href="#">Träning</a></li>
+              <li><a href="#">Löpning</a></li>
+              <li><a href="#">Outdoor</a></li>
+            </ul>
+          </nav>
+        </section>
+      </div>
+
+      <p>© 2025 Springskor AB</p>
+
+    </footer>
+  </div>
+
+  <script src="js/index.js"></script>
+</body>
+
+</html>
